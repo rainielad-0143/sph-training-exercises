@@ -61,7 +61,7 @@ export default function BookList() {
       </div>
 
       {input && sortedBooks.length === 0 ? (
-        <p>No books found for "{input}"</p>
+        <p style={{ marginTop: "15px" }}>No books found for "{input}"</p>
       ) : (
         <ul>
           {sortedBooks.map((book) => {
