@@ -51,10 +51,6 @@ function App() {
           {activeTab === "members" && <MemberHistory />}
         </div>
       </main>
-
-      <footer className="app-footer">
-        <p>© {new Date().getFullYear()} Library System</p>
-      </footer>
     </div>
   );
 }
