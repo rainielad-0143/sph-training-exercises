@@ -9,8 +9,7 @@ export default function MemberHistory() {
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
-
-  // filter members by search text
+  
   const filteredMembers =
     search.trim() === ""
       ? members

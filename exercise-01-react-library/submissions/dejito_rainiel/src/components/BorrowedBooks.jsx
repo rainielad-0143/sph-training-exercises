@@ -1,8 +1,11 @@
 import { borrowedBooks, books, members } from "../data/data";
 
 export default function BorrowedBooks() {
-  const active = borrowedBooks.filter((b) => !b.returned);
   const today = new Date();
+
+  const activeSorted = [...borrowedBooks]
+    .filter((b) => !b.returned)
+    .sort((a, b) => new Date(b.dueDate) - new Date(a.dueDate));
 
   return (
     <div>
@@ -20,9 +23,11 @@ export default function BorrowedBooks() {
         </thead>
 
         <tbody>
-          {active.map((item) => {
-            const book = books.find((b) => b.id === item.bookId);
-            const member = members.find((m) => m.id === item.memberId);
+          {activeSorted.map((item) => {
+            const book = books.find((book) => book.id === item.bookId);
+            const member = members.find(
+              (member) => member.id === item.memberId,
+            );
 
             const dueDate = new Date(item.dueDate);
             const isOverdue = dueDate < today;
@@ -33,7 +38,7 @@ export default function BorrowedBooks() {
                 <td>{member?.name}</td>
                 <td>{new Date(item.borrowedDate).toLocaleDateString()}</td>
                 <td>{new Date(item.dueDate).toLocaleDateString()}</td>
-                <td>{isOverdue ? "Overdue" : "On Time"}</td>
+                <td>{isOverdue ? "Overdue" : "Active"}</td>
               </tr>
             );
           })}

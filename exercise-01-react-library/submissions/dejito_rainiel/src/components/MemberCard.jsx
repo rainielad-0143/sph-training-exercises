@@ -13,7 +13,7 @@ function MemberCard({ item, books, today }) {
           color: isOverdue ? "inherit" : "var(--forest-light)",
         }}
       >
-        {item.returned ? "Returned" : isOverdue ? "Overdue" : "Active"}{" "}
+        {item.returned ? "Returned" : isOverdue ? "Overdue" : "Active"}
       </span>
     </p>
   );

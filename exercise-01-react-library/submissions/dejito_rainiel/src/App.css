@@ -274,10 +274,30 @@ h2::before {
 
 /* sort controls */
 .controls {
-  margin-bottom: 15px;
+  margin-top: 10px;
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.controls input {
+  margin-right: 10px;
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 250px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.controls input:focus {
+  border-color: #3d6b5a;
+  box-shadow: 0 0 0 2px rgba(70, 229, 163, 0.2);
+}
+
+.controls input::placeholder {
+  color: #999;
 }
 
 .controls select {
@@ -285,20 +305,25 @@ h2::before {
   border-radius: 4px;
   border: 1px solid #ccc;
   cursor: pointer;
+  outline: none;
+}
+
+.controls select:focus {
+  box-shadow: 0 0 0 2px rgba(70, 229, 163, 0.2);
 }
 
 .controls button {
   padding: 5px 10px;
   border: none;
   border-radius: 4px;
-  background-color: #3498db;
+  background-color: var(--forest);
   color: white;
   cursor: pointer;
   transition: 0.2s;
 }
 
 .controls button:hover {
-  background-color: #2980b9;
+  background-color: var(--forest-light);
 }
 
 ul:not(.list-container) {

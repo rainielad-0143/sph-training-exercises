@@ -4,13 +4,26 @@ import { useState } from "react";
 export default function BookList() {
   const [sortBy, setSortBy] = useState("title");
   const [asc, setAsc] = useState(true);
+  const [input, setInput] = useState("");
 
   const handleChange = (e) => {
-    e.preventDefault();
     setSortBy(e.target.value);
   };
 
-  const sortedBooks = [...books].sort((a, b) => {
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+  };
+
+  const filteredBooks = books.filter((book) => {
+    const author = authors.find((author) => author.id === book.authorId);
+
+    return (
+      book.title.toLowerCase().includes(input.toLowerCase()) ||
+      author?.name.toLowerCase().includes(input.toLowerCase())
+    );
+  });
+
+  const sortedBooks = [...filteredBooks].sort((a, b) => {
     let valA;
     let valB;
 
@@ -30,6 +43,13 @@ export default function BookList() {
       <h2>Book List</h2>
 
       <div className="controls">
+        <input
+          type="text"
+          value={input}
+          onChange={handleInputChange}
+          placeholder="Search a book..."
+        />
+
         <label>Sort by:</label>
 
         <select value={sortBy} onChange={handleChange}>
@@ -40,16 +60,20 @@ export default function BookList() {
         <button onClick={() => setAsc(!asc)}>{asc ? "↑ Asc" : "↓ Desc"}</button>
       </div>
 
-      <ul>
-        {sortedBooks.map((book) => {
-          const author = authors.find((a) => a.id === book.authorId);
-          return (
-            <li key={book.id}>
-              {book.title} - <em>{author?.name}</em>
-            </li>
-          );
-        })}
-      </ul>
+      {input && sortedBooks.length === 0 ? (
+        <p>No books found for "{input}"</p>
+      ) : (
+        <ul>
+          {sortedBooks.map((book) => {
+            const author = authors.find((a) => a.id === book.authorId);
+            return (
+              <li key={book.id}>
+                {book.title} - <em>{author?.name}</em>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 }
