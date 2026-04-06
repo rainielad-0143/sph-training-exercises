@@ -391,7 +391,6 @@ li.overdue:hover {
   font-weight: bold;
 }
 
-/* search input */
 .member-search {
   padding: 6px 10px;
   border-radius: 5px;
@@ -401,13 +400,12 @@ li.overdue:hover {
   max-width: 400px;
 }
 
-/* card layout */
 .member-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 12px;
 
-  max-height: 400px;
+  max-height: 500px;
   overflow-y: auto;
   padding-right: 6px;
 }

@@ -6,6 +6,7 @@ export default function BookList() {
   const [asc, setAsc] = useState(true);
 
   const handleChange = (e) => {
+    e.preventDefault();
     setSortBy(e.target.value);
   };
 
