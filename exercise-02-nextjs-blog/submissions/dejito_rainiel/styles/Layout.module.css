@@ -1,0 +1,127 @@
+/* Header */
+.siteHeader {
+  position: sticky;
+  top: 0;
+  background: rgba(250, 250, 250, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #eaeaea;
+  z-index: 100;
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Inner header layout */
+.headerInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+}
+
+/* Logo */
+.siteLogo {
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.5px;
+}
+
+.siteLogo span {
+  color: #6c5ce7;
+}
+
+/* Nav */
+.siteNav {
+  display: flex;
+  gap: 18px;
+}
+
+/* Nav links */
+.siteNav a {
+  font-size: 14px;
+  color: #555;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: 0.2s ease;
+}
+
+.siteNav a:hover {
+  background: #eee;
+  color: #111;
+}
+
+/* Active link */
+.active {
+  color: #111;
+  font-weight: 600;
+  position: relative;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 2px;
+  height: 2px;
+  background: #6c5ce7;
+  border-radius: 2px;
+}
+
+/* Main */
+.mainContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 70vh;
+}
+
+/* Footer */
+.siteFooter {
+  border-top: 1px solid #eaeaea;
+  margin-top: 60px;
+  padding: 25px 0;
+  font-size: 13px;
+  color: #777;
+  text-align: center;
+}
+
+.siteNav {
+  display: flex;
+  gap: 18px;
+}
+
+.navLink {
+  font-size: 14px;
+  color: #555;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: 0.2s ease;
+}
+
+.navLink:hover {
+  background: #eee;
+  color: #111;
+}
+
+/* active state */
+.active {
+  color: #111;
+  font-weight: 600;
+  position: relative;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 2px;
+  height: 2px;
+  background: #6c5ce7;
+  border-radius: 2px;
+}
