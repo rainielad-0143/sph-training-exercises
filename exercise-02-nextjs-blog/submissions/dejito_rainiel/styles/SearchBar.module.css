@@ -1,0 +1,14 @@
+.searchWrap {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.searchWrap input {
+  padding: 5px 8px;
+  outline: none;
+  width: 40%;
+}
+
+.searchIcon {
+  margin: 0 10px;
+}

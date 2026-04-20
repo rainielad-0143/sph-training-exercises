@@ -12,7 +12,7 @@ export default function BlogDetail({ post }) {
   return (
     <>
       <Head>
-        <title>{post.title} — the.journal</title>
+        <title>{`${post.title} — B.Logz`}</title>
         <meta name="description" content={post.description} />
       </Head>
 

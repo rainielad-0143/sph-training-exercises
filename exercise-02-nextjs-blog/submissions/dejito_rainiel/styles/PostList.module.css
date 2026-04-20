@@ -1,0 +1,11 @@
+.noResults {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.postList {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #c6c6c6;
+  border-radius: 4px;
+}

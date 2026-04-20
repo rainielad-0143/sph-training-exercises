@@ -19,7 +19,7 @@ export default function Home({ posts, tags }) {
   return (
     <>
       <Head>
-        <title>the.journal</title>
+        <title>B.Logz</title>
         <meta
           name="description"
           content="A personal blog on lifestyle, tech, books, and ideas."
@@ -28,7 +28,7 @@ export default function Home({ posts, tags }) {
 
       <HeroSection />
 
-      <div className="controls">
+      <div>
         <SearchBar query={query} setQuery={setQuery} />
 
         <TagFilter

@@ -1,0 +1,21 @@
+.tagFilters {
+  background: #5f6ade;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.tagBtn .active {
+  padding: 6px 8px;
+}
+
+.tagBtn {
+  margin: 0 5px;
+  border: none;
+  border-radius: 3px;
+  font-family: "Courier New", Courier, monospace;
+  cursor: pointer;
+}
+
+.active {
+  background: #d9d9f0;
+}

@@ -1,0 +1,93 @@
+.aboutWrap {
+  margin: 0 auto;
+  padding: 20px;
+  color: #111;
+  line-height: 1.7;
+}
+
+.aboutHeader {
+  margin-bottom: 1rem;
+}
+
+.aboutLabel {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.aboutHeader h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.aboutBody {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+}
+
+.aboutBio p {
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  color: #222;
+}
+
+.aboutSidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.aboutCard {
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 1.25rem;
+  background: #fafafa;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.aboutCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.aboutCard h3 {
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #444;
+  font-weight: bold;
+}
+
+.aboutCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aboutCard li {
+  padding: 0.35rem 0;
+  color: #333;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.aboutCard li:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .aboutBody {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutHeader h1 {
+    font-size: 2rem;
+  }
+}

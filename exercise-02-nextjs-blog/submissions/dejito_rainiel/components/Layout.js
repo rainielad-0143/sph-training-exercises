@@ -42,7 +42,7 @@ export default function Layout({ children }) {
       <main className={styles.mainContainer}>{children}</main>
 
       <footer className={styles.siteFooter}>
-        <p>© {new Date().getFullYear()} the.journal — Built with Next.js</p>
+        <p>© {new Date().getFullYear()} B.Logz — Built with Next.js</p>
       </footer>
     </>
   );

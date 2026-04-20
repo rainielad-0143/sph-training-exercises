@@ -1,8 +1,10 @@
+import styles from "@/styles/TagFilter.module.css";
+
 export default function TagFilter({ tags, activeTag, setActiveTag }) {
   return (
-    <div className="tag-filters">
+    <div className={styles.tagFilters}>
       <button
-        className={`tag-btn${activeTag === "" ? " active" : ""}`}
+        className={`${styles.tagBtn} ${activeTag === "" ? styles.active : ""}`}
         onClick={() => setActiveTag("")}
       >
         All
@@ -11,7 +13,7 @@ export default function TagFilter({ tags, activeTag, setActiveTag }) {
       {tags.map((t) => (
         <button
           key={t}
-          className={`tag-btn${activeTag === t ? " active" : ""}`}
+          className={`${styles.tagBtn} ${activeTag === t ? styles.active : ""}`}
           onClick={() => setActiveTag(t === activeTag ? "" : t)}
         >
           {t}
