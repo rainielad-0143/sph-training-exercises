@@ -15,9 +15,9 @@ export default function PostCard({ post }) {
 
       <div className={styles.body}>
         <div className={styles.tags}>
-          {post.tags.map((t) => (
-            <span key={t} className={styles.tagPill}>
-              {t}
+          {post.tags.map((tag) => (
+            <span key={tag} className={styles.tagPill}>
+              {tag}
             </span>
           ))}
         </div>
