@@ -32,16 +32,24 @@ CREATE TABLE borrow_records (
 INSERT INTO authors (author_name) VALUES
 ('Ali Hazelwood'),
 ('TurtleMe'),
+<<<<<<< HEAD
 ('Shing-Shong'),
 ('Jee Gab Song');
+=======
+('Shing-Shong');
+>>>>>>> fbfb377bc70f5a32b60f011be65cf21f2673cef8
 
 INSERT INTO books (title, author_id) VALUES
 ('The Love Hypothesis', 1),
 ('Love on the Brain', 1),
 ('The Beginning After The End', 2),
 ('Omniscient Reader''s Viewpoint', 3),
+<<<<<<< HEAD
 ('The World After The Fall', 3),
 ('The Novel''s Extra', 4);
+=======
+('The World After The Fall', 3);
+>>>>>>> fbfb377bc70f5a32b60f011be65cf21f2673cef8
 
 INSERT INTO members (member_name) VALUES
 ('Adam'),
