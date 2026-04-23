@@ -1,5 +1,4 @@
 CREATE DATABASE library_db;
-<<<<<<< HEAD
 
 USE library_db;
 
@@ -29,5 +28,3 @@ CREATE TABLE borrow_records (
     FOREIGN KEY (member_id) REFERENCES members(id),
     FOREIGN KEY (book_id) REFERENCES books(id)
 );
-=======
->>>>>>> bffc80585e6b9ec673efec0538abf8ab900a8253
