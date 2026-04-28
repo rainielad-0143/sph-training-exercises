@@ -3,6 +3,7 @@ import BorrowedBooks from "./components/BorrowedBooks";
 import MemberHistory from "./components/MemberHistory";
 import "./App.css";
 import { useState, useEffect } from "react";
+import NavBar from "./components/navbar/NavBar";
 
 const TABS = [
   { id: "books", label: "Book List", icon: "📚" },
@@ -18,6 +19,14 @@ function App() {
   useEffect(() => {
     localStorage.setItem("ACTIVE_TAB", activeTab);
   }, [activeTab]);
+
+  const TAB_COMPONENTS = {
+    books: Booklist,
+    borrowed: BorrowedBooks,
+    members: MemberHistory,
+  };
+
+  const ActiveComponent = TAB_COMPONENTS[activeTab];
 
   return (
     <div className="app-wrapper">
@@ -35,26 +44,12 @@ function App() {
       </header>
 
       <nav className="tab-nav">
-        <div className="tab-nav-inner">
-          {TABS.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`tab-btn ${activeTab === tab.id ? "active" : ""}`}
-            >
-              <span className="tab-icon">{tab.icon}</span>
-              <span className="tab-label">{tab.label}</span>
-              {activeTab === tab.id && <span className="tab-underline" />}
-            </button>
-          ))}
-        </div>
+        <NavBar tabs={TABS} setActiveTab={setActiveTab} activeTab={activeTab} />
       </nav>
 
       <main className="app-main">
         <div className="content-card">
-          {activeTab === "books" && <Booklist />}
-          {activeTab === "borrowed" && <BorrowedBooks />}
-          {activeTab === "members" && <MemberHistory />}
+          <ActiveComponent />
         </div>
       </main>
     </div>

@@ -1,5 +1,7 @@
-import { books, authors } from "../data/data";
 import { useState } from "react";
+
+import { books, authors } from "../data/data";
+import Books from "./books/Books";
 
 export default function BookList() {
   const [sortBy, setSortBy] = useState("title");
@@ -66,11 +68,7 @@ export default function BookList() {
         <ul>
           {sortedBooks.map((book) => {
             const author = authors.find((a) => a.id === book.authorId);
-            return (
-              <li key={book.id}>
-                {book.title} - <em>{author?.name}</em>
-              </li>
-            );
+            return <Books key={book.id} book={book} author={author} />;
           })}
         </ul>
       )}
