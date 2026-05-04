@@ -1,8 +1,17 @@
 import { prisma } from "./lib/prisma";
 
 async function main() {
-  const page = 1;
   const pageSize = 2;
+
+  const totalCount = await prisma.post.count();
+  const totalPages = Math.ceil(totalCount / pageSize);
+
+  const pageQueries = Array.from({ length: totalPages }, (_, page) =>
+    prisma.post.findMany({
+      skip: page * pageSize,
+      take: pageSize,
+    }),
+  );
 
   const [
     allPosts,
@@ -10,7 +19,7 @@ async function main() {
     userPosts,
     usersWithPostCount,
     filterCategories,
-    paginatedPosts,
+    ...pages
   ] = await Promise.all([
     prisma.post.findMany({
       include: {
@@ -50,17 +59,18 @@ async function main() {
         category: true,
       },
     }),
-    await prisma.post.findMany({
-      skip: (page - 1) * pageSize,
-      take: pageSize,
-    }),
+    ...pageQueries,
   ]);
+
   console.log("All Posts:", allPosts);
   console.log("Published Posts:", publishedPosts);
   console.log("User's Posts:", userPosts);
   console.log("Posts per User:", usersWithPostCount);
   console.log("Filtered Posts:", filterCategories);
-  console.log("Paginated Posts:", paginatedPosts);
+
+  pages.forEach((posts, page) => {
+    console.log(`Page ${page + 1}:`, posts);
+  });
 }
 
 main()
