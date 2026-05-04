@@ -18,7 +18,7 @@ async function main() {
     ],
   });
 
-  const category = await prisma.category.createManyAndReturn({
+  const categories = await prisma.category.createManyAndReturn({
     data: [
       {
         name: "Tech",
@@ -39,35 +39,35 @@ async function main() {
         content: "Hello from Alice",
         published: true,
         userId: users[0].id,
-        categoryId: category[0].id,
+        categoryId: categories[0].id,
       },
       {
         title: "Alice Post 2",
         content: "Another post by Alice",
         published: false,
         userId: users[0].id,
-        categoryId: category[1].id,
+        categoryId: categories[1].id,
       },
       {
         title: "Jinhyuk Post 1",
         content: "Jinhyuk's first post",
         published: true,
         userId: users[1].id,
-        categoryId: category[1].id,
+        categoryId: categories[1].id,
       },
       {
         title: "Jinhyuk Post 2",
         content: "Jinhyuk again",
         published: false,
         userId: users[1].id,
-        categoryId: category[0].id,
+        categoryId: categories[0].id,
       },
       {
         title: "Teresa Post 1",
         content: "Teresa here",
         published: true,
         userId: users[2].id,
-        categoryId: category[2].id,
+        categoryId: categories[2].id,
       },
     ],
   });
