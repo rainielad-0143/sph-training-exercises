@@ -1,7 +1,7 @@
 import { prisma } from "../lib/prisma";
 
 async function main() {
-  await prisma.user.createMany({
+  const users = await prisma.user.createManyAndReturn({
     data: [
       {
         name: "Alice",
@@ -24,31 +24,31 @@ async function main() {
         title: "Alice Post 1",
         content: "Hello from Alice",
         published: true,
-        userId: 1,
+        userId: users[1].id,
       },
       {
         title: "Alice Post 2",
         content: "Another post by Alice",
         published: false,
-        userId: 1,
+        userId: users[1].id,
       },
       {
         title: "Jinhyuk Post 1",
         content: "Jinhyuk's first post",
         published: true,
-        userId: 2,
+        userId: users[2].id,
       },
       {
         title: "Jinhyuk Post 2",
         content: "Jinhyuk again",
         published: false,
-        userId: 2,
+        userId: users[2].id,
       },
       {
         title: "Teresa Post 1",
         content: "Teresa here",
         published: true,
-        userId: 3,
+        userId: users[3].id,
       },
     ],
   });
