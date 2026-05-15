@@ -27,6 +27,11 @@ export class TasksController {
     return this.tasksServices.findAll();
   }
 
+  @Get()
+  findByStatus() {
+
+  }
+
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.tasksServices.findOne(id);

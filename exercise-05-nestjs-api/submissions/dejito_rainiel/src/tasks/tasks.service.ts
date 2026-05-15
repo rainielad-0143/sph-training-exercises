@@ -70,4 +70,11 @@ export class TasksService {
       message: 'Task deleted',
     };
   }
+
+  findByStatus(status: TaskStatus) {
+    return this.taskRepo.find({
+      where: { status },
+      relations: ['user'],
+    });
+  }
 }
