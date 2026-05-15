@@ -12,6 +12,6 @@ export class User {
   @Column({ unique: true })
   email: string;
 
-  @OneToMany(() => Task, (task) => task.userId)
+  @OneToMany(() => Task, (task) => task.user)
   tasks: Task[];
 }
