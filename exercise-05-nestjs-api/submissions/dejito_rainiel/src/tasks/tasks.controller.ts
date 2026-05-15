@@ -7,6 +7,7 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 
 import { TasksService } from './tasks.service';
@@ -25,13 +26,8 @@ export class TasksController {
   }
 
   @Get()
-  findAll() {
-    return this.tasksServices.findAll();
-  }
-
-  @Get('status/:status')
-  findByStatus(@Param('status') status: TaskStatus) {
-    return this.tasksServices.findByStatus(status);
+  findAll(@Query('status') status?: TaskStatus) {
+    return this.tasksServices.findAll(status);
   }
 
   @Get(':id')

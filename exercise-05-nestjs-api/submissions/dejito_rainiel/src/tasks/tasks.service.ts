@@ -35,8 +35,9 @@ export class TasksService {
     return this.task.save(task);
   }
 
-  findAll() {
+  findAll(status?: TaskStatus) {
     return this.task.find({
+      where: status ? { status } : {},
       relations: ['user'],
     });
   }
@@ -70,12 +71,5 @@ export class TasksService {
     return {
       message: 'Task deleted',
     };
-  }
-
-  findByStatus(status: TaskStatus) {
-    return this.task.find({
-      where: { status },
-      relations: ['user'],
-    });
   }
 }
