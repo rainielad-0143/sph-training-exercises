@@ -41,9 +41,9 @@ export class TasksController {
     });
   }
 
-  @Get()
-  findByStatus() {
-
+  @Get('status/:status')
+  findByStatus(@Param('status') status: TaskStatus) {
+    return this.tasksServices.findByStatus(status);
   }
 
   @Get(':id')
