@@ -7,7 +7,11 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+<<<<<<< HEAD
   Query,
+=======
+  UseGuards,
+>>>>>>> c736102 (Add authentication (JWT))
 } from '@nestjs/common';
 
 import { TasksService } from './tasks.service';
@@ -15,6 +19,7 @@ import { TasksService } from './tasks.service';
 import { TaskStatus } from './enums/task-status.enum';
 
 import { CreateTaskDto } from './dtos/create-task.dto';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('tasks')
 export class TasksController {
@@ -25,6 +30,7 @@ export class TasksController {
     return this.tasksServices.create(dto);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   findAll(@Query('status') status?: TaskStatus) {
     return this.tasksServices.findAll(status);

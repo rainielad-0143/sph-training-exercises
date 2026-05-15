@@ -1,11 +1,23 @@
-### Create user
-POST http://localhost:3000/users
+### Create/Register a user
+POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
     "name": "Jane Doe",
-    "email": "jane@test.com"
+    "email": "jane@test.com",
+    "password": "12348765"
 }
+
+
+### Log in as existing user
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "jane@test.com",
+    "password": "12348765"
+}
+
 
 ### Get All Users
 GET http://localhost:3000/users
@@ -18,16 +30,16 @@ POST http://localhost:3000/tasks
 Content-Type: application/json
 
 {
-    "title": "Sample Title 5",
-    "description": "Sample description 5",
-    "userId": 1
+    "title": "Sample Title 2",
+    "description": "Sample description 2",
+    "userId": 2
 }
 
 ### Get all tasks with filter
 GET http://localhost:3000/tasks?status=pending
 
 ### Get Task by ID
-GET http://localhost:3000/tasks/4
+GET http://localhost:3000/tasks/1
 
 ### Get task by filter
 GET http://localhost:3000/tasks/status/done
@@ -42,3 +54,5 @@ Content-Type: application/json
 
 ### Delete a Task
 DELETE http://localhost:3000/tasks/999
+
+
