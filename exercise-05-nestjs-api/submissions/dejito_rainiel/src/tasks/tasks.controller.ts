@@ -40,7 +40,7 @@ export class TasksController {
     return this.tasksServices.update(id, dto);
   }
 
-  @Delete('id')
+  @Delete(':id')
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.tasksServices.remove(id);
   }

@@ -11,16 +11,15 @@ Content-Type: application/json
 GET http://localhost:3000/users
 
 ### Get User by ID
-GET http://localhost:3000/users/1
+GET http://localhost:3000/users/2
 
 ### Create Task
 POST http://localhost:3000/tasks
 Content-Type: application/json
 
 {
-    "title": "Sample Title 3",
-    "description": "Sample description 3",
-    "status": "pending",
+    "title": "Sample Title 5",
+    "description": "Sample description 5",
     "userId": 1
 }
 
@@ -28,7 +27,7 @@ Content-Type: application/json
 GET http://localhost:3000/tasks
 
 ### Get Task by ID
-GET http://localhost:3000/tasks/2
+GET http://localhost:3000/tasks/4
 
 ### Update Task
 PATCH http://localhost:3000/tasks/1
@@ -39,4 +38,4 @@ Content-Type: application/json
 }
 
 ### Delete a Task
-DELETE http://localhost:3000/tasks/3
+DELETE http://localhost:3000/tasks/999

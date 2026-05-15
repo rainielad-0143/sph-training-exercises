@@ -7,16 +7,17 @@ import { Task } from './task.entity';
 import { User } from '../users/user.entity';
 
 import { CreateTaskDto } from './dtos/create-task.dto';
+import { UpdateTaskDto } from './dtos/update-task.dto';
 
 @Injectable()
 export class TasksService {
   constructor(
-    @InjectRepository(Task) private taskRepo: Repository<Task>,
-    @InjectRepository(User) private userRepo: Repository<User>,
+    @InjectRepository(Task) private task: Repository<Task>,
+    @InjectRepository(User) private user: Repository<User>,
   ) {}
 
   async create(dto: CreateTaskDto) {
-    const user = await this.userRepo.findOneBy({
+    const user = await this.user.findOneBy({
       id: dto.userId,
     });
 
@@ -24,36 +25,46 @@ export class TasksService {
       throw new NotFoundException('User not found');
     }
 
-    const task = this.taskRepo.create({
+    const task = this.task.create({
       title: dto.title,
       description: dto.description,
-      status: dto.status,
       user,
     });
 
-    return this.taskRepo.save(task);
+    return this.task.save(task);
   }
 
   findAll() {
-    return this.taskRepo.find({
+    return this.task.find({
       relations: ['user'],
     });
   }
 
-  findOne(id: number) {
-    return this.taskRepo.findOne({
+  async findOne(id: number) {
+    const task = await this.task.findOne({
       where: { id },
       relations: ['user'],
     });
+
+    if (!task) {
+      throw new NotFoundException('Task not found');
+    }
+
+    return task;
   }
 
-  async update(id: number, dto: Partial<CreateTaskDto>) {
-    await this.taskRepo.update(id, dto);
+  async update(id: number, dto: UpdateTaskDto) {
+    await this.findOne(id);
+
+    await this.task.update(id, dto);
+
     return this.findOne(id);
   }
 
   async remove(id: number) {
-    await this.taskRepo.delete(id);
+    await this.findOne(id);
+
+    await this.task.delete(id);
 
     return {
       message: 'Task deleted',
