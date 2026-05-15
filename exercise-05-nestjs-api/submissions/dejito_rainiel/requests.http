@@ -29,6 +29,9 @@ GET http://localhost:3000/tasks
 ### Get Task by ID
 GET http://localhost:3000/tasks/4
 
+### Get task by filter
+GET http://localhost:3000/tasks/status/done
+
 ### Update Task
 PATCH http://localhost:3000/tasks/1
 Content-Type: application/json
