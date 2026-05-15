@@ -52,4 +52,12 @@ export class TasksService {
     await this.taskRepo.update(id, dto);
     return this.findOne(id);
   }
+
+  async remove(id: number) {
+    await this.taskRepo.delete(id);
+
+    return {
+      message: 'Task deleted',
+    };
+  }
 }

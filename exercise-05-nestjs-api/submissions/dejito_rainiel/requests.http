@@ -1,1 +1,42 @@
-### Find create tasks
+### Create user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "Jane Doe",
+    "email": "jane@test.com"
+}
+
+### Get All Users
+GET http://localhost:3000/users
+
+### Get User by ID
+GET http://localhost:3000/users/1
+
+### Create Task
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+    "title": "Sample Title 3",
+    "description": "Sample description 3",
+    "status": "pending",
+    "userId": 1
+}
+
+### Get all tasks
+GET http://localhost:3000/tasks
+
+### Get Task by ID
+GET http://localhost:3000/tasks/2
+
+### Update Task
+PATCH http://localhost:3000/tasks/1
+Content-Type: application/json
+
+{
+    "status": "done"
+}
+
+### Delete a Task
+DELETE http://localhost:3000/tasks/3
