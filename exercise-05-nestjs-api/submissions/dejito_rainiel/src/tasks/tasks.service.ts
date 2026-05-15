@@ -74,7 +74,7 @@ export class TasksService {
   }
 
   findByStatus(status: TaskStatus) {
-    return this.taskRepo.find({
+    return this.task.find({
       where: { status },
       relations: ['user'],
     });
