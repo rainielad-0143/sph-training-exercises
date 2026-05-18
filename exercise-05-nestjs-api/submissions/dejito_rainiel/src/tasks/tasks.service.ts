@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 
 import { Task } from './task.entity';
 import { User } from '../users/user.entity';
+import { TaskStatus } from './enums/task-status.enum';
 
 import { CreateTaskDto } from './dtos/create-task.dto';
 import { UpdateTaskDto } from './dtos/update-task.dto';
@@ -34,8 +35,9 @@ export class TasksService {
     return this.task.save(task);
   }
 
-  findAll() {
+  findAll(status?: TaskStatus) {
     return this.task.find({
+      where: status ? { status } : {},
       relations: ['user'],
     });
   }

@@ -7,9 +7,12 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 
 import { TasksService } from './tasks.service';
+
+import { TaskStatus } from './enums/task-status.enum';
 
 import { CreateTaskDto } from './dtos/create-task.dto';
 
@@ -23,8 +26,8 @@ export class TasksController {
   }
 
   @Get()
-  findAll() {
-    return this.tasksServices.findAll();
+  findAll(@Query('status') status?: TaskStatus) {
+    return this.tasksServices.findAll(status);
   }
 
   @Get(':id')
