@@ -41,11 +41,6 @@ export class TasksController {
     });
   }
 
-  @Get('status/:status')
-  findByStatus(@Param('status') status: TaskStatus) {
-    return this.tasksServices.findByStatus(status);
-  }
-
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.tasksServices.findOne(id);
