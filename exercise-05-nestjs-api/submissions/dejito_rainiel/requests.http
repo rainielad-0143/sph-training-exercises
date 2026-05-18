@@ -30,8 +30,8 @@ POST http://localhost:3000/tasks
 Content-Type: application/json
 
 {
-    "title": "Sample Title 2",
-    "description": "Sample description 2",
+    "title": "Sample Title 3",
+    "description": "Sample description 3",
     "userId": 2
 }
 
@@ -45,11 +45,11 @@ GET http://localhost:3000/tasks/1
 GET http://localhost:3000/tasks/status/done
 
 ### Update Task
-PATCH http://localhost:3000/tasks/1
+PATCH http://localhost:3000/tasks/2
 Content-Type: application/json
 
 {
-    "status": "done"
+    "status": "in-progress"
 }
 
 ### Delete a Task
