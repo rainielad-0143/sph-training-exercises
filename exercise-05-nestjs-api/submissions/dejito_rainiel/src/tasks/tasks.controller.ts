@@ -29,9 +29,10 @@ export class TasksController {
 
   @UseGuards(JwtAuthGuard)
   @Get()
+  @Get()
   findAll(
     @Query('page') page = 1,
-    @Query('limit') limit = 3,
+    @Query('limit') limit = 5,
     @Query('status') status?: TaskStatus,
   ) {
     return this.tasksServices.findAll(Number(page), Number(limit), status);
