@@ -37,7 +37,7 @@ Content-Type: application/json
 }
 
 ### Get all tasks with filter (Needs authorizatoin (token))
-GET http://localhost:3000/tasks?status=pending
+GET http://localhost:3000/tasks?page=2&status=pending
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiamFuZUB0ZXN0LmNvbSIsImlhdCI6MTc3OTA3MjA0NCwiZXhwIjoxNzc5MTU4NDQ0fQ.dehQVmSqp4eD087C5D6qp2l_XE2GFjPddcmKip_HF60
 
 ### Get Task by ID
