@@ -7,11 +7,8 @@ import {
   ParseIntPipe,
   Patch,
   Post,
-<<<<<<< HEAD
   Query,
-=======
   UseGuards,
->>>>>>> c736102 (Add authentication (JWT))
 } from '@nestjs/common';
 
 import { TasksService } from './tasks.service';
@@ -34,11 +31,6 @@ export class TasksController {
   @Get()
   findAll(@Query('status') status?: TaskStatus) {
     return this.tasksServices.findAll(status);
-  }
-
-  @Get('status/:status')
-  findByStatus(@Param('status') status: TaskStatus) {
-    return this.tasksServices.findByStatus(status);
   }
 
   @Get(':id')

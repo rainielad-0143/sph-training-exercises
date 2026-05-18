@@ -72,11 +72,4 @@ export class TasksService {
       message: 'Task deleted',
     };
   }
-
-  findByStatus(status: TaskStatus) {
-    return this.task.find({
-      where: { status },
-      relations: ['user'],
-    });
-  }
 }

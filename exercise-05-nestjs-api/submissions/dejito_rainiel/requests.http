@@ -8,7 +8,6 @@ Content-Type: application/json
     "password": "12348765"
 }
 
-
 ### Log in as existing user
 POST http://localhost:3000/auth/login
 Content-Type: application/json
@@ -37,20 +36,15 @@ Content-Type: application/json
     "userId": 2
 }
 
-### Get all tasks with filter
+### Get all tasks with filter (Needs authorizatoin (token))
 GET http://localhost:3000/tasks?status=pending
-### Get all tasks (Needs authorization)
-GET http://localhost:3000/tasks
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiamFuZUB0ZXN0LmNvbSIsImlhdCI6MTc3OTA3MDI4MywiZXhwIjoxNzc5MTU2NjgzfQ.82dn1Xcm-iT_gOjuKpEuBpydqjWiVWLn4KaqmCmaJ4k
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiamFuZUB0ZXN0LmNvbSIsImlhdCI6MTc3OTA3MjA0NCwiZXhwIjoxNzc5MTU4NDQ0fQ.dehQVmSqp4eD087C5D6qp2l_XE2GFjPddcmKip_HF60
 
 ### Get Task by ID
 GET http://localhost:3000/tasks/1
 
-### Get task by filter
-GET http://localhost:3000/tasks/status/done
-
 ### Update Task
-PATCH http://localhost:3000/tasks/2
+PATCH http://localhost:3000/tasks/0
 Content-Type: application/json
 
 {
