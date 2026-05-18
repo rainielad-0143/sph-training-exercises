@@ -29,7 +29,6 @@ export class TasksController {
 
   @UseGuards(JwtAuthGuard)
   @Get()
-  @Get()
   findAll(
     @Query('page') page = 1,
     @Query('limit') limit = 5,
