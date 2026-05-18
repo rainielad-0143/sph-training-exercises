@@ -35,7 +35,11 @@ export class TasksController {
     @Query('limit') limit = 5,
     @Query('status') status?: TaskStatus,
   ) {
-    return this.tasksServices.findAll(Number(page), Number(limit), status);
+    return this.tasksServices.findAll({
+      page,
+      limit,
+      status,
+    });
   }
 
   @Get(':id')
