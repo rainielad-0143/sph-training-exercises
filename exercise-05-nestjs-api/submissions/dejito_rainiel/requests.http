@@ -18,6 +18,8 @@ Content-Type: application/json
     "password": "12348765"
 }
 
+### Log out user
+POST http://localhost:3000/auth/logout
 
 ### Get All Users
 GET http://localhost:3000/users
@@ -37,6 +39,9 @@ Content-Type: application/json
 
 ### Get all tasks with filter
 GET http://localhost:3000/tasks?status=pending
+### Get all tasks (Needs authorization)
+GET http://localhost:3000/tasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiamFuZUB0ZXN0LmNvbSIsImlhdCI6MTc3OTA3MDI4MywiZXhwIjoxNzc5MTU2NjgzfQ.82dn1Xcm-iT_gOjuKpEuBpydqjWiVWLn4KaqmCmaJ4k
 
 ### Get Task by ID
 GET http://localhost:3000/tasks/1
