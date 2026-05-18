@@ -43,9 +43,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsI
 ### Get Task by ID
 GET http://localhost:3000/tasks/1
 
-### Get task by filter
-GET http://localhost:3000/tasks/status/done
-
 ### Update Task
 PATCH http://localhost:3000/tasks/2
 Content-Type: application/json
