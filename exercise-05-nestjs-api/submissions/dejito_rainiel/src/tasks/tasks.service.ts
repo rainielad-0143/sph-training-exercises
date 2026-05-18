@@ -40,9 +40,9 @@ export class TasksService {
     limit = 5,
     status,
   }: {
-    page: number;
-    limit: number;
-    status: TaskStatus;
+    page?: number;
+    limit?: number;
+    status?: TaskStatus;
   }) {
     const [tasks, total] = await this.task.findAndCount({
       where: status ? { status } : {},
