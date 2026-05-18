@@ -3,8 +3,8 @@ POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
-    "name": "Jane Doe",
-    "email": "jane@test.com",
+    "name": "John Doe",
+    "email": "john@test.com",
     "password": "12348765"
 }
 
@@ -13,7 +13,7 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "jane@test.com",
+    "email": "john@test.com",
     "password": "12348765"
 }
 
@@ -31,24 +31,24 @@ POST http://localhost:3000/tasks
 Content-Type: application/json
 
 {
-    "title": "Sample Title 3",
-    "description": "Sample description 3",
+    "title": "Sample Title 5",
+    "description": "Sample description",
     "userId": 2
 }
 
 ### Get all tasks with filter (Needs authorizatoin (token))
-GET http://localhost:3000/tasks?status=pending
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiamFuZUB0ZXN0LmNvbSIsImlhdCI6MTc3OTA3MjA0NCwiZXhwIjoxNzc5MTU4NDQ0fQ.dehQVmSqp4eD087C5D6qp2l_XE2GFjPddcmKip_HF60
+GET http://localhost:3000/tasks?page=1&status=pending
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiam9obkB0ZXN0LmNvbSIsImlhdCI6MTc3OTA3NTc3OCwiZXhwIjoxNzc5MTYyMTc4fQ.7Bta2L0Zb0aHkdxI-hyhYiSxApzoOEa5_g7VXt6KYHI
 
 ### Get Task by ID
 GET http://localhost:3000/tasks/1
 
 ### Update Task
-PATCH http://localhost:3000/tasks/0
+PATCH http://localhost:3000/tasks/2
 Content-Type: application/json
 
 {
-    "status": "in-progress"
+    "status": "done"
 }
 
 ### Delete a Task

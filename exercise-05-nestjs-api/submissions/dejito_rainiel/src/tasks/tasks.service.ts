@@ -35,11 +35,29 @@ export class TasksService {
     return this.task.save(task);
   }
 
-  findAll(status?: TaskStatus) {
-    return this.task.find({
+  async findAll({
+    page = 1,
+    limit = 5,
+    status,
+  }: {
+    page: number;
+    limit: number;
+    status: TaskStatus;
+  }) {
+    const [tasks, total] = await this.task.findAndCount({
       where: status ? { status } : {},
       relations: ['user'],
+      skip: (page - 1) * limit,
+      take: limit,
     });
+
+    return {
+      data: tasks,
+      total,
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit),
+    };
   }
 
   async findOne(id: number) {
