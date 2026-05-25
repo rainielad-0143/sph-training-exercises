@@ -32,6 +32,7 @@ const TABS = [
 const STORAGE_KEY = "ACTIVE_TAB";
 
 function App() {
+  const STORAGE_KEY = "ACTIVE_TAB";
   const [activeTab, setActiveTab] = useState(() => {
     return localStorage.getItem(STORAGE_KEY) || "books";
   });
