@@ -4,29 +4,44 @@ import MemberHistory from "./components/MemberHistory";
 import "./App.css";
 import { useState, useEffect } from "react";
 import NavBar from "./components/navbar/NavBar";
+import bookIcon from "./assets/icons/books.png";
+import bookmark from "./assets/icons/bookmark.png";
+import person from "./assets/icons/person.png";
 
 const TABS = [
-  { id: "books", label: "Book List", icon: "📚" },
-  { id: "borrowed", label: "Borrowed Books", icon: "🔖" },
-  { id: "members", label: "Member History", icon: "👤" },
+  {
+    id: "books",
+    label: "Book List",
+    icon: bookIcon,
+    component: Booklist,
+  },
+  {
+    id: "borrowed",
+    label: "Borrowed Books",
+    icon: bookmark,
+    component: BorrowedBooks,
+  },
+  {
+    id: "members",
+    label: "Member History",
+    icon: person,
+    component: MemberHistory,
+  },
 ];
 
 function App() {
+  const STORAGE_KEY = "ACTIVE_TAB";
   const [activeTab, setActiveTab] = useState(() => {
-    return localStorage.getItem("ACTIVE_TAB") || "books";
+    return localStorage.getItem(STORAGE_KEY) || "books";
   });
 
   useEffect(() => {
-    localStorage.setItem("ACTIVE_TAB", activeTab);
+    localStorage.setItem(STORAGE_KEY, activeTab);
   }, [activeTab]);
 
-  const TAB_COMPONENTS = {
-    books: Booklist,
-    borrowed: BorrowedBooks,
-    members: MemberHistory,
-  };
+  const activeTabData = TABS.find((tab) => tab.id === activeTab);
 
-  const ActiveComponent = TAB_COMPONENTS[activeTab];
+  const ActiveComponent = activeTabData.component;
 
   return (
     <div className="app-wrapper">
