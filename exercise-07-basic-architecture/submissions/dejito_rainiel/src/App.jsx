@@ -13,7 +13,11 @@ const TABS = [
     id: "books",
     label: "Book List",
     icon: bookIcon,
+<<<<<<< HEAD
     component: BookList,
+=======
+    component: Booklist,
+>>>>>>> 0a56094 (Applied DRY principles to App.jsx & Booklist.jsx)
   },
   {
     id: "borrowed",
