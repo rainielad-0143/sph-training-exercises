@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+<<<<<<< HEAD
 <<<<<<<< HEAD:exercise-07-basic-architecture/submissions/dejito_rainiel/src/components/pages/Booklist.jsx
 import { books } from "../../data/data";
 import Books from "../books/Books";
@@ -7,8 +8,13 @@ import Books from "../books/Books";
 import Book from "../../models/Book";
 ========
 import { books, authors } from "../../data/data";
+=======
+import { books } from "../../data/data";
+>>>>>>> a9da735 (Added OOP principle for BookList)
 import Books from "../books/Books";
 >>>>>>>> 00af33f (Added DRY principle in BorrowedBooks and MemberHistory):exercise-07-basic-architecture/submissions/dejito_rainiel/src/components/main/Booklist.jsx
+
+import Book from "../../models/Book";
 
 export default function BookList() {
   const [sortBy, setSortBy] = useState("title");
