@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import BookList from "./components/pages/Booklist";
 import BorrowedBooks from "./components/pages/BorrowedBooks";
 import MemberHistory from "./components/pages/MemberHistory";
+=======
+import BookList from "./components/main/Booklist";
+import BorrowedBooks from "./components/main/BorrowedBooks";
+import MemberHistory from "./components/main/MemberHistory";
+>>>>>>> 00af33f (Added DRY principle in BorrowedBooks and MemberHistory)
 import "./App.css";
 import { useState, useEffect } from "react";
 import NavBar from "./components/navbar/NavBar";
@@ -14,10 +20,14 @@ const TABS = [
     label: "Book List",
     icon: bookIcon,
 <<<<<<< HEAD
+<<<<<<< HEAD
     component: BookList,
 =======
     component: Booklist,
 >>>>>>> 0a56094 (Applied DRY principles to App.jsx & Booklist.jsx)
+=======
+    component: BookList,
+>>>>>>> 00af33f (Added DRY principle in BorrowedBooks and MemberHistory)
   },
   {
     id: "borrowed",

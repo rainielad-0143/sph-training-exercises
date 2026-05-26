@@ -13,10 +13,14 @@ function NavBar({ tabs, setActiveTab, activeTab }) {
             <img src={tab.icon} alt={tab.label} className="tab-icon" />
             <span className="tab-label">{tab.label}</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
             {isActive && <span className="tab-underline" />}
 =======
             {activeTab === tab.id && <span className="tab-underline" />}
 >>>>>>> 0a56094 (Applied DRY principles to App.jsx & Booklist.jsx)
+=======
+            {isActive && <span className="tab-underline" />}
+>>>>>>> 00af33f (Added DRY principle in BorrowedBooks and MemberHistory)
           </button>
         );
       })}
