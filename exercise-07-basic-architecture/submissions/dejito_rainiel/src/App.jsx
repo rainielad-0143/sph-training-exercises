@@ -1,6 +1,6 @@
-import Booklist from "./components/Booklist";
-import BorrowedBooks from "./components/BorrowedBooks";
-import MemberHistory from "./components/MemberHistory";
+import BookList from "./components/main/Booklist";
+import BorrowedBooks from "./components/main/BorrowedBooks";
+import MemberHistory from "./components/main/MemberHistory";
 import "./App.css";
 import { useState, useEffect } from "react";
 import NavBar from "./components/navbar/NavBar";
@@ -13,7 +13,7 @@ const TABS = [
     id: "books",
     label: "Book List",
     icon: bookIcon,
-    component: Booklist,
+    component: BookList,
   },
   {
     id: "borrowed",

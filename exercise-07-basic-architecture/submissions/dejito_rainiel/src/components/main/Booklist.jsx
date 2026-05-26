@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 
-import { books, authors } from "../data/data";
-import Books from "./books/Books";
+import { books, authors } from "../../data/data";
+import Books from "../books/Books";
 
 export default function BookList() {
   const [sortBy, setSortBy] = useState("title");

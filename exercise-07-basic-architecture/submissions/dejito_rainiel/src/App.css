@@ -468,6 +468,27 @@ li.overdue:hover {
   font-weight: bold;
 }
 
+.muted {
+  opacity: 0.6;
+}
+
+.empty-text {
+  font-style: italic;
+  opacity: 0.6;
+}
+.book-status {
+  font-size: 13px;
+  font-style: italic;
+}
+
+.returned {
+  opacity: 0.55;
+}
+
+.active {
+  color: var(--forest-light);
+}
+
 .app-footer {
   text-align: center;
   padding: 20px;
