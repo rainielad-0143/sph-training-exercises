@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { members, borrowedBooks, books } from "../../data/data";
+import { members, borrowedBookInstances, books } from "../../data/data";
 import MemberCard from "../members/MemberCard";
 import { createMapById } from "../../utils/utils";
 import person from "../../assets/icons/person.png";
@@ -11,7 +11,7 @@ export default function MemberHistory() {
   const normalizedSearch = search.toLowerCase();
 
   const historyMap = useMemo(() => {
-    return borrowedBooks.reduce((acc, item) => {
+    return borrowedBookInstances.reduce((acc, item) => {
       if (!acc[item.memberId]) {
         acc[item.memberId] = [];
       }
