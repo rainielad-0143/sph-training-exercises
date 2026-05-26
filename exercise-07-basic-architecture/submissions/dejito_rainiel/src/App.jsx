@@ -1,6 +1,6 @@
-import BookList from "./components/main/Booklist";
-import BorrowedBooks from "./components/main/BorrowedBooks";
-import MemberHistory from "./components/main/MemberHistory";
+import BookList from "./components/pages/Booklist";
+import BorrowedBooks from "./components/pages/BorrowedBooks";
+import MemberHistory from "./components/pages/MemberHistory";
 import "./App.css";
 import { useState, useEffect } from "react";
 import NavBar from "./components/navbar/NavBar";
