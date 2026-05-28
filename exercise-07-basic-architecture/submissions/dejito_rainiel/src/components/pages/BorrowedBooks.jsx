@@ -1,16 +1,34 @@
 import { borrowedBooks, books, members } from "../../data/data";
 import BorrowedBooksRow from "../borrowed-books/BorrowedBooksRow";
 import { createMapById } from "../../utils/utils";
+import { useMemo } from "react";
 
 const TABLE_HEADERS = ["Title", "Member", "Borrowed", "Due Date", "Status"];
 
 export default function BorrowedBooks() {
-  const sortedBorrowedBooks = [...borrowedBooks]
-    .filter((b) => !b.returned)
-    .sort((a, b) => new Date(b.dueDate) - new Date(a.dueDate));
+  const bookMap = useMemo(
+    () => createMapById(books),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [books],
+  );
 
-  const bookMap = createMapById(books);
-  const memberMap = createMapById(members);
+  const memberMap = useMemo(
+    () => createMapById(members),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [members],
+  );
+
+  const sortedBorrowedBooks = useMemo(() => {
+    return borrowedBooks
+      .filter((item) => !item.returned)
+      .map((item) => ({
+        ...item,
+        book: bookMap[item.bookId],
+        member: memberMap[item.memberId],
+      }))
+      .sort((a, b) => new Date(b.dueDate) - new Date(a.dueDate));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [borrowedBooks, bookMap, memberMap]);
 
   return (
     <div>
@@ -27,15 +45,12 @@ export default function BorrowedBooks() {
 
         <tbody>
           {sortedBorrowedBooks.map((item) => {
-            const book = bookMap[item.bookId];
-            const member = memberMap[item.memberId];
-
             return (
               <BorrowedBooksRow
                 key={item.id}
                 item={item}
-                book={book}
-                member={member}
+                book={item.book}
+                member={item.member}
               />
             );
           })}

@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { members, borrowedBooks, books } from "../../data/data";
 import MemberCard from "../members/MemberCard";
 import { createMapById } from "../../utils/utils";
+import person from "../../assets/icons/person.png";
 
 export default function MemberHistory() {
   const [search, setSearch] = useState("");
@@ -19,12 +20,14 @@ export default function MemberHistory() {
 
       return acc;
     }, {});
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [borrowedBooks]);
 
-  const filteredMembers =
-    search.trim() === ""
+  const filteredMembers = useMemo(() => {
+    return search.trim() === ""
       ? members
       : members.filter((m) => m.name.toLowerCase().includes(normalizedSearch));
+  }, [search, normalizedSearch]);
 
   const bookMap = createMapById(books);
 
@@ -48,7 +51,7 @@ export default function MemberHistory() {
           return (
             <div key={member.id} className="member-card">
               <div className="member-header">
-                <span>👤</span>
+                <img src={person} alt="member-icon" width="24px" />
                 <strong>{member.name}</strong>
                 <span className="muted">
                   · {history.length} {recordLabel}
