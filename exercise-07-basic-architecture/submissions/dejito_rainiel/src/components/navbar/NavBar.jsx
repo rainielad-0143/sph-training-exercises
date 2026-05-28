@@ -12,7 +12,7 @@ function NavBar({ tabs, setActiveTab, activeTab }) {
           >
             <img src={tab.icon} alt={tab.label} className="tab-icon" />
             <span className="tab-label">{tab.label}</span>
-            {activeTab === tab.id && <span className="tab-underline" />}
+            {isActive && <span className="tab-underline" />}
           </button>
         );
       })}
