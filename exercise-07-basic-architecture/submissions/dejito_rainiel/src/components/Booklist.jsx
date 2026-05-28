@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 import { books, authors } from "../data/data";
 import Books from "./books/Books";
@@ -8,34 +8,28 @@ export default function BookList() {
   const [asc, setAsc] = useState(true);
   const [input, setInput] = useState("");
 
-  const handleChange = (e) => {
-    setSortBy(e.target.value);
-  };
+  const normalizedInput = input.toLowerCase();
 
-  const handleInputChange = (e) => {
-    setInput(e.target.value);
-  };
+  const booksWithAuthors = useMemo(() => {
+    return books.map((book) => ({
+      ...book,
+      author: authors.find((author) => author.id === book.authorId),
+    }));
+  }, []);
 
-  const filteredBooks = books.filter((book) => {
-    const author = authors.find((author) => author.id === book.authorId);
-
+  const filteredBooks = booksWithAuthors.filter((book) => {
     return (
-      book.title.toLowerCase().includes(input.toLowerCase()) ||
-      author?.name.toLowerCase().includes(input.toLowerCase())
+      book.title.toLowerCase().includes(normalizedInput) ||
+      book.author?.name.toLowerCase().includes(normalizedInput)
     );
   });
 
   const sortedBooks = [...filteredBooks].sort((a, b) => {
-    let valA;
-    let valB;
+    const getValue = (book) =>
+      sortBy === "title" ? book.title : book.author?.name || "";
 
-    if (sortBy === "title") {
-      valA = a.title;
-      valB = b.title;
-    } else {
-      valA = authors.find((auth) => auth.id === a.authorId)?.name || "";
-      valB = authors.find((auth) => auth.id === b.authorId)?.name || "";
-    }
+    const valA = getValue(a);
+    const valB = getValue(b);
 
     return asc ? valA.localeCompare(valB) : valB.localeCompare(valA);
   });
@@ -48,28 +42,29 @@ export default function BookList() {
         <input
           type="text"
           value={input}
-          onChange={handleInputChange}
+          onChange={(e) => setInput(e.target.value)}
           placeholder="Search a book..."
         />
 
         <label>Sort by:</label>
 
-        <select value={sortBy} onChange={handleChange}>
+        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
           <option value="title">Title</option>
           <option value="author">Author</option>
         </select>
 
-        <button onClick={() => setAsc(!asc)}>{asc ? "↑ Asc" : "↓ Desc"}</button>
+        <button onClick={() => setAsc(() => !asc)}>
+          {asc ? "↑ Asc" : "↓ Desc"}
+        </button>
       </div>
 
       {input && sortedBooks.length === 0 ? (
         <p style={{ marginTop: "15px" }}>No books found for "{input}"</p>
       ) : (
         <ul>
-          {sortedBooks.map((book) => {
-            const author = authors.find((a) => a.id === book.authorId);
-            return <Books key={book.id} book={book} author={author} />;
-          })}
+          {sortedBooks.map((book) => (
+            <Books key={book.id} book={book} author={book.author} />
+          ))}
         </ul>
       )}
     </div>
