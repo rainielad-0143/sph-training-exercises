@@ -29,10 +29,7 @@ export default function MemberHistory() {
       : members.filter((m) => m.name.toLowerCase().includes(normalizedSearch));
   }, [search, normalizedSearch]);
 
-  const bookMap = useMemo(() => {
-    createMapById(books);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [books]);
+  const bookMap = useMemo(() => createMapById(books), [books]);
 
   return (
     <div>
