@@ -21,7 +21,7 @@ export default function MemberHistory() {
       return acc;
     }, {});
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [borrowedBooks]);
+  }, [borrowedBookInstances]);
 
   const filteredMembers = useMemo(() => {
     return search.trim() === ""
