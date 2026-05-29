@@ -1,7 +1,7 @@
-function Books({ book, author }) {
+function Books({ book, authorName }) {
   return (
-    <li key={book.id}>
-      {book.title} - <em>{author?.name}</em>
+    <li>
+      {book.title} - <em>{authorName || "Unknown Author"}</em>
     </li>
   );
 }
