@@ -1,34 +1,17 @@
-import { books, borrowedBookInstances, members } from "../../data/data";
-import BorrowedBooksRow from "../borrowed-books/BorrowedBooksRow";
-import { createMapById } from "../../utils/utils";
 import { useMemo } from "react";
+
+import { borrowedBookInstances } from "../../data/data";
+import BorrowedBooksRow from "../borrowed-books/BorrowedBooksRow";
 
 const TABLE_HEADERS = ["Title", "Member", "Borrowed", "Due Date", "Status"];
 
 export default function BorrowedBooks() {
-  const bookMap = useMemo(
-    () => createMapById(books),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [books],
-  );
-
-  const memberMap = useMemo(
-    () => createMapById(members),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [members],
-  );
-
   const sortedBorrowedBooks = useMemo(() => {
     return borrowedBookInstances
-      .filter((item) => !item.returned)
-      .map((item) => ({
-        ...item,
-        book: bookMap[item.bookId],
-        member: memberMap[item.memberId],
-      }))
+      .filter((item) => item.isActive())
       .sort((a, b) => new Date(b.dueDate) - new Date(a.dueDate));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [borrowedBookInstances, bookMap, memberMap]);
+  }, [borrowedBookInstances]);
 
   return (
     <div>

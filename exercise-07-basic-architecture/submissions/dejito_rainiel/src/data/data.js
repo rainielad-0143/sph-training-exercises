@@ -214,5 +214,5 @@ const rawBorrowedBooks = [
 ];
 
 export const borrowedBookInstances = rawBorrowedBooks.map(
-  (b) => new BorrowedBook(b),
+  (b) => new BorrowedBook(b, books, members),
 );
