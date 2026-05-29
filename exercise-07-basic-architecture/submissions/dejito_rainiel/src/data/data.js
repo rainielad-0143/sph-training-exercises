@@ -1,6 +1,7 @@
-// data.js
+import Book from "../models/Book";
+import Author from "../models/Author";
 
-export const authors = [
+const authors = [
   { id: 1, name: "J.K. Rowling" },
   { id: 2, name: "George Orwell" },
   { id: 3, name: "J.R.R. Tolkien" },
@@ -8,7 +9,7 @@ export const authors = [
   { id: 5, name: "Dan Brown" },
 ];
 
-export const books = [
+const rawBooks = [
   { id: 1, title: "Harry Potter and the Sorcerer's Stone", authorId: 1 },
   { id: 2, title: "Harry Potter and the Chamber of Secrets", authorId: 1 },
   { id: 3, title: "1984", authorId: 2 },
@@ -31,6 +32,10 @@ export const books = [
   { id: 19, title: "Inferno", authorId: 5 },
   { id: 20, title: "Origin", authorId: 5 },
 ];
+
+export const authorInstances = authors.map((a) => new Author(a));
+
+export const books = rawBooks.map((book) => new Book(book, authorInstances));
 
 export const members = [
   { id: 1, name: "Alice Johnson" },

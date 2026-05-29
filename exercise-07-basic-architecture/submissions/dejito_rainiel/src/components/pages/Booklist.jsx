@@ -1,7 +1,9 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 
-import { books, authors } from "../../data/data";
+import { books } from "../../data/data";
 import Books from "../books/Books";
+
+import Book from "../../models/Book";
 
 export default function BookList() {
   const [sortBy, setSortBy] = useState("title");
@@ -10,28 +12,15 @@ export default function BookList() {
 
   const normalizedInput = input.toLowerCase();
 
-  const booksWithAuthors = useMemo(() => {
-    return books.map((book) => ({
-      ...book,
-      author: authors.find((author) => author.id === book.authorId),
-    }));
-  }, []);
-
-  const filteredBooks = booksWithAuthors.filter((book) => {
-    return (
-      book.title.toLowerCase().includes(normalizedInput) ||
-      book.author?.name.toLowerCase().includes(normalizedInput)
-    );
-  });
+  const filteredBooks = books.filter((book) => book.matches(normalizedInput));
 
   const sortedBooks = [...filteredBooks].sort((a, b) => {
     const getValue = (book) =>
-      sortBy === "title" ? book.title : book.author?.name || "";
+      sortBy === "title" ? book.title : book.getAuthorName();
 
-    const valA = getValue(a);
-    const valB = getValue(b);
-
-    return asc ? valA.localeCompare(valB) : valB.localeCompare(valA);
+    return asc
+      ? getValue(a).localeCompare(getValue(b))
+      : getValue(b).localeCompare(getValue(a));
   });
 
   return (
@@ -62,9 +51,15 @@ export default function BookList() {
         <p style={{ marginTop: "15px" }}>No books found for "{input}"</p>
       ) : (
         <ul>
-          {sortedBooks.map((book) => (
-            <Books key={book.id} book={book} author={book.author} />
-          ))}
+          {sortedBooks.map((book) => {
+            return (
+              <Books
+                key={book.id}
+                book={book}
+                authorName={book.getAuthorName()}
+              />
+            );
+          })}
         </ul>
       )}
     </div>
