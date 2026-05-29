@@ -1,6 +1,6 @@
-import Booklist from "./components/Booklist";
-import BorrowedBooks from "./components/BorrowedBooks";
-import MemberHistory from "./components/MemberHistory";
+import BookList from "./components/pages/Booklist";
+import BorrowedBooks from "./components/pages/BorrowedBooks";
+import MemberHistory from "./components/pages/MemberHistory";
 import "./App.css";
 import { useState, useEffect } from "react";
 import NavBar from "./components/navbar/NavBar";
@@ -13,7 +13,7 @@ const TABS = [
     id: "books",
     label: "Book List",
     icon: bookIcon,
-    component: Booklist,
+    component: BookList,
   },
   {
     id: "borrowed",
@@ -32,6 +32,7 @@ const TABS = [
 const STORAGE_KEY = "ACTIVE_TAB";
 
 function App() {
+  const STORAGE_KEY = "ACTIVE_TAB";
   const [activeTab, setActiveTab] = useState(() => {
     return localStorage.getItem(STORAGE_KEY) || "books";
   });
