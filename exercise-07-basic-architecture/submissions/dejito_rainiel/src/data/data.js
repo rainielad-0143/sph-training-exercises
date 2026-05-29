@@ -1,5 +1,6 @@
 import Book from "../models/Book";
 import Author from "../models/Author";
+import BorrowedBook from "../models/BorrowedBooks";
 
 const authors = [
   { id: 1, name: "J.K. Rowling" },
@@ -48,7 +49,7 @@ export const members = [
   { id: 8, name: "Hannah Baker" },
 ];
 
-export const borrowedBooks = [
+const rawBorrowedBooks = [
   {
     id: 1,
     bookId: 1,
@@ -211,3 +212,7 @@ export const borrowedBooks = [
     returned: false,
   },
 ];
+
+export const borrowedBookInstances = rawBorrowedBooks.map(
+  (b) => new BorrowedBook(b),
+);

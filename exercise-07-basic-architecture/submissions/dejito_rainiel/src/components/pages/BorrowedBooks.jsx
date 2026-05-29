@@ -1,4 +1,4 @@
-import { borrowedBooks, books, members } from "../../data/data";
+import { books, borrowedBookInstances, members } from "../../data/data";
 import BorrowedBooksRow from "../borrowed-books/BorrowedBooksRow";
 import { createMapById } from "../../utils/utils";
 import { useMemo } from "react";
@@ -19,7 +19,7 @@ export default function BorrowedBooks() {
   );
 
   const sortedBorrowedBooks = useMemo(() => {
-    return borrowedBooks
+    return borrowedBookInstances
       .filter((item) => !item.returned)
       .map((item) => ({
         ...item,
@@ -28,7 +28,7 @@ export default function BorrowedBooks() {
       }))
       .sort((a, b) => new Date(b.dueDate) - new Date(a.dueDate));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [borrowedBooks, bookMap, memberMap]);
+  }, [borrowedBookInstances, bookMap, memberMap]);
 
   return (
     <div>
